@@ -1,6 +1,6 @@
 /*
-Feladat: Adjuk meg egy egész számokat tartalmazó tömb
-leggyakoribb elemét a [0..m] intervallumon.
+Feladat: Adjuk meg egy egesz szamokat tartalmazo tomb
+leggyakoribb elemet a [0..m] intervallumon.
 */
 
 #include <iostream>
@@ -9,7 +9,7 @@ leggyakoribb elemét a [0..m] intervallumon.
 
 using namespace std;
 
-int mostFrequented (int m, const vector<int> &x);
+int MostFrequent (int m, const vector<int> &x);
 int frequency (const vector<int> &x, int e);
 
 
@@ -17,15 +17,15 @@ int main()
 {
     ifstream f ("input.txt");
     /*input.txt tartalma:
-    35 <- Az intervallum felsõ határa, tehát az intervallumunk [0..35]
-    2 25 13 0 2 0 35 13 2 <- A tömb elemei
+    35 <- Az intervallum felso hatara, tehat az intervallumunk [0..35]
+    2 25 13 0 2 0 35 13 2 <- A tomb elemei
     */
     if(f.fail())
     {
         cout << "Hiba a fajl nyitasakor!\n"; return 1;
     }
-    int m; //Az intervallumunk felsõ korlátja (Alsó korlátja 0)
-    f >> m;  //m beolvasása az input.txt fájlból.
+    int m; //Az intervallumunk felso korlatja (Also korlatja 0)
+    f >> m;  //m beolvasasa az input.txt fajlbol.
     if(m<0)
     {
         cout << "Nem lehet a felso korlat negativ!\n"; return 1;
@@ -34,7 +34,7 @@ int main()
     int e;
     while(f >> e)
     {
-        if(e >=0 && e <=m) x.push_back(e); //A .push_back(elem) metódussal fûzhetünk a vektorunk végére új elemet.
+        if(e >=0 && e <=m) x.push_back(e); //A .push_back(elem) metodussal fuzhetunk a vektorunk vegere uj elemet.
     }
 
     if(x.size() >0) cout << "A megadott sorozat leggyakoribb eleme: " << mostFrequented(m,x) << endl;
@@ -43,11 +43,11 @@ int main()
 }
 
 
-//Maximum kiválasztás intervallumra alkalmazva.
-//Az intervallum itt a 0 és m közötti természetes számok halmazát jelenti.
-//Az intervallum minden elemének a gyakoriságát le tudjuk kérdezni a frequency(...) függvénnyel.
-//A gyakoriságok felhasználásával meg kell adnunk az intervallum leggyakoribb elemét.
-int mostFrequented(int m, const vector<int> &x)
+//Maximum kivalasztas intervallumra alkalmazva.
+//Az intervallum itt a 0 es m kozotti termeszetes szamok halmazat jelenti.
+//Az intervallum minden elemenek a gyakorisagat le tudjuk kerdezni a frequency(...) fuggvennyel.
+//A gyakorisagok felhasznalasaval meg kell adnunk az intervallum leggyakoribb elemet.
+int MostFrequent(int m, const vector<int> &x)
 {
     int max = frequency(x,0);
     int elem = 0;
@@ -60,11 +60,11 @@ int mostFrequented(int m, const vector<int> &x)
             elem = i;
         }
     }
-    return max;
+    return elem;
 }
 
-//Számlálás tétele tömbre alkalmazva.
-//Egy adott elemnek a gyakoriságát kell megadnunk a tömbben.
+//Szamlalas tetele tombre alkalmazva.
+//Egy adott elemnek a gyakorisagat kell megadnunk a tombben.
 int frequency (const vector<int> &x, int e)
 {
     int c = 0;
@@ -77,5 +77,5 @@ int frequency (const vector<int> &x, int e)
     }
     return c;
 }
-//A vector size() metódusa elõjel nélküli számmal tér vissza, így warningot kapnánk ha a ciklusváltozónk (i) nem unsigned lenne.
+//A vector size() metodusa elojel nelkuli szammal ter vissza, igy warningot kapnank ha a ciklusvaltozonk (i) nem unsigned lenne.
 
