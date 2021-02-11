@@ -9,7 +9,7 @@ leggyakoribb elemet a [0..m] intervallumon.
 
 using namespace std;
 
-int MostFrequent (int m, const vector<int> &x);
+int mostFrequent (int m, const vector<int> &x);
 int frequency (const vector<int> &x, int e);
 
 
@@ -37,7 +37,7 @@ int main()
         if(e >=0 && e <=m) x.push_back(e); //A .push_back(elem) metodussal fuzhetunk a vektorunk vegere uj elemet.
     }
 
-    if(x.size() >0) cout << "A megadott sorozat leggyakoribb eleme: " << mostFrequented(m,x) << endl;
+    if(x.size() >0) cout << "A megadott sorozat leggyakoribb eleme: " << mostFrequent(m,x) << endl;
     else cout << "A megadott sorozat ures!" << endl;
     return 0;
 }
@@ -47,7 +47,7 @@ int main()
 //Az intervallum itt a 0 es m kozotti termeszetes szamok halmazat jelenti.
 //Az intervallum minden elemenek a gyakorisagat le tudjuk kerdezni a frequency(...) fuggvennyel.
 //A gyakorisagok felhasznalasaval meg kell adnunk az intervallum leggyakoribb elemet.
-int MostFrequent(int m, const vector<int> &x)
+int mostFrequent(int m, const vector<int> &x)
 {
     int max = frequency(x,0);
     int elem = 0;
